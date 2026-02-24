@@ -1,1 +1,37 @@
-<p>quest-form works!</p>
+<header class="head">
+  <div>
+    <h1>Nouvelle quête</h1>
+    <p>Crée une quête courte et claire. Tu la coches quand c’est fait.</p>
+  </div>
+
+  <a class="back" routerLink="/quests">← Retour</a>
+</header>
+
+<form class="card" [formGroup]="form" (ngSubmit)="submit()">
+  <label class="field">
+    <span>Titre</span>
+    <input
+      type="text"
+      formControlName="title"
+      placeholder="Ex: 25 minutes de code"
+      maxlength="60"
+    />
+    <small class="error" *ngIf="titleError()">{{ titleError() }}</small>
+  </label>
+
+  <label class="field">
+    <span>Difficulté</span>
+    <select formControlName="difficulty">
+      @for (d of difficulties; track d.value) {
+        <option [value]="d.value">{{ d.label }}</option>
+      }
+    </select>
+  </label>
+
+  <div class="actions">
+    <button class="btn" type="submit">Créer</button>
+    <button class="btn ghost" type="button" (click)="form.reset({ title: '', difficulty: 'easy' })">
+      Reset
+    </button>
+  </div>
+</form>

@@ -1,1 +1,40 @@
-<p>dashboard works!</p>
+<section class="hero">
+  <div class="title">
+    <h1>Dashboard</h1>
+    <p>Bienvenue dans QuestLog. Crée des quêtes, gagne de l'XP, monte de niveau.</p>
+  </div>
+
+  <a class="cta" routerLink="/quests/new">+ Créer une quête</a>
+</section>
+
+<section class="cards">
+    <article class="card">
+        <h2>🎯 Quête du jour</h2>
+        <p>(Bientôt) On te proposera une quête aléatoire pour commencer.</p>
+    </article>
+
+    <article class="card">
+        <h2>⚡ Progression</h2>
+
+        <div *ngIf="xp$ | async as xp">
+        <div *ngIf="level$ | async as level">
+            <p><strong>Niveau :</strong> {{ level }}</p>
+            <p><strong>XP total :</strong> {{ xp }}</p>
+
+            <div class="bar">
+                <div
+                class="fill"
+                [style.width.%]="(xp % 100)"
+                ></div>
+            </div>
+
+            <small>{{ xp % 100 }} / 100 XP pour le prochain niveau</small>
+            </div>
+        </div>
+    </article>
+
+    <article class="card">
+        <h2>📌 À faire</h2>
+        <p>(Bientôt) Un aperçu des quêtes actives.</p>
+    </article>
+</section>

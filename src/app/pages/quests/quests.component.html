@@ -1,1 +1,54 @@
-<p>quests works!</p>
+<header class="head">
+  <div>
+    <h1>Quêtes</h1>
+    <p>Termine des quêtes pour gagner de l’XP (on arrive à l’XP juste après).</p>
+  </div>
+</header>
+
+<section class="block">
+  <h2>Actives</h2>
+
+  <div class="list" *ngIf="active$ | async as quests">
+    <p class="empty" *ngIf="quests.length === 0">Plus aucune quête active. GG 👑</p>
+
+    @for (q of quests; track q.id) {
+      <article class="quest">
+        <div class="info">
+          <div class="title">{{ q.title }}</div>
+          <div class="meta">
+            <span class="pill" [ngClass]="q.difficulty">{{ q.difficulty }}</span>
+          </div>
+        </div>
+
+        <div class="actions">
+          <button class="btn" (click)="done(q.id)">Terminer</button>
+          <button class="btn ghost" (click)="remove(q.id)">Supprimer</button>
+        </div>
+      </article>
+    }
+  </div>
+</section>
+
+<section class="block">
+  <h2>Terminées</h2>
+
+  <div class="list" *ngIf="done$ | async as quests">
+    <p class="empty" *ngIf="quests.length === 0">Rien de terminé… pour l’instant 😈</p>
+
+    @for (q of quests; track q.id) {
+      <article class="quest done">
+        <div class="info">
+          <div class="title">{{ q.title }}</div>
+          <div class="meta">
+            <span class="pill" [ngClass]="q.difficulty">{{ q.difficulty }}</span>
+            <span class="date">✅ {{ q.doneAt | date:'short' }}</span>
+          </div>
+        </div>
+
+        <div class="actions">
+          <button class="btn ghost" (click)="remove(q.id)">Supprimer</button>
+        </div>
+      </article>
+    }
+  </div>
+</section>
