@@ -1,0 +1,95 @@
+.head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 1rem;
+  margin-bottom: 1rem;
+
+  h1 {
+    margin: 0;
+    font-size: 1.8rem;
+  }
+  p {
+    margin: 0.35rem 0 0;
+    opacity: 0.85;
+  }
+}
+
+.back {
+  color: #cfd6ff;
+  text-decoration: none;
+  padding: 0.45rem 0.7rem;
+  border-radius: 0.75rem;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.06);
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.1);
+  }
+}
+
+.card {
+  padding: 1rem;
+  border-radius: 1.25rem;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.03);
+  display: grid;
+  gap: 0.9rem;
+  max-width: 700px;
+}
+
+.field {
+  display: grid;
+  gap: 0.4rem;
+
+  span {
+    font-weight: 700;
+    opacity: 0.95;
+  }
+
+  input,
+  select {
+    width: 100%;
+    padding: 0.65rem 0.75rem;
+    border-radius: 0.9rem;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    background: rgba(10, 14, 28, 0.6);
+    color: #e7e9ee;
+    outline: none;
+
+    &:focus {
+      border-color: rgba(207, 214, 255, 0.6);
+    }
+  }
+}
+
+.error {
+  color: #ffb4c7;
+  opacity: 0.95;
+}
+
+.actions {
+  display: flex;
+  gap: 0.6rem;
+  align-items: center;
+}
+
+.btn {
+  border: 0;
+  cursor: pointer;
+  border-radius: 0.9rem;
+  padding: 0.6rem 0.9rem;
+  font-weight: 800;
+  background: #cfd6ff;
+  color: #0b1020;
+
+  &:hover {
+    filter: brightness(1.05);
+  }
+
+  &.ghost {
+    background: rgba(255, 255, 255, 0.08);
+    color: #e7e9ee;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+  }
+}
